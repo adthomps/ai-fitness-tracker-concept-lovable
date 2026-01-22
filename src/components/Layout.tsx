@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: '/workouts', label: 'Workouts' },
     { path: '/dexa', label: 'DEXA' },
     { path: '/imports', label: 'Imports' },
-    { path: '/ai-analytics', label: 'AI Coach' },
+    { path: '/ai-analytics', label: 'AI & Analytics' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

@@ -24,10 +24,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navItems = [
     { path: '/dashboard', label: 'Dashboard' },
+    { path: '/calendar', label: 'Calendar' },
     { path: '/exercises', label: 'Exercises' },
     { path: '/workouts', label: 'Workouts' },
-    { path: '/analytics', label: 'Analytics' },
-    { path: '/ai-analytics', label: 'AI Analytics' },
+    { path: '/dexa', label: 'DEXA' },
+    { path: '/imports', label: 'Imports' },
+    { path: '/ai-analytics', label: 'AI Coach' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

@@ -11,16 +11,15 @@ import {
   Dumbbell, 
   Target, 
   TrendingUp,
-  User,
-  LogOut,
   Plus,
   Award,
   Brain
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Layout from '@/components/Layout';
 
 const Dashboard = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   // Mock data for demo
   const stats = {
@@ -39,54 +38,10 @@ const Dashboard = () => {
   const weeklyProgress = (stats.weeklyWorkouts / stats.weeklyGoal) * 100;
 
   return (
-    <div className="min-h-screen bg-muted/30">
-      {/* Header */}
-      <header className="bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
-                <Dumbbell className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <h1 className="text-xl font-bold text-foreground">FitTracker</h1>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/dashboard" className="text-primary font-medium">
-                Dashboard
-              </Link>
-              <Link to="/exercises" className="text-muted-foreground hover:text-foreground transition-colors">
-                Exercises
-              </Link>
-              <Link to="/workouts" className="text-muted-foreground hover:text-foreground transition-colors">
-                Workouts
-              </Link>
-              <Link to="/analytics" className="text-muted-foreground hover:text-foreground transition-colors">
-                Analytics
-              </Link>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="h-8 w-8 bg-muted rounded-full flex items-center justify-center">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                </div>
-                <span className="text-sm font-medium text-foreground hidden sm:block">
-                  {user?.name}
-                </span>
-              </div>
-              <Button variant="ghost" size="sm" onClick={logout}>
-                <LogOut className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+    <Layout>
+      <div className="space-y-8">
         {/* Welcome Section */}
-        <div className="mb-8">
+        <div>
           <h2 className="text-3xl font-bold text-foreground mb-2">
             Welcome back, {user?.name?.split(' ')[0]}! 👋
           </h2>
@@ -96,7 +51,7 @@ const Dashboard = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center space-x-2">
@@ -182,36 +137,36 @@ const Dashboard = () => {
               <CardDescription>Jump into your workout</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Link to="/workouts/new">
+              <Link to="/workouts">
                 <Button className="w-full justify-start" size="lg">
                   <Plus className="mr-2 h-4 w-4" />
                   Start New Workout
                 </Button>
               </Link>
-              <Link to="/exercises/new">
+              <Link to="/exercises">
                 <Button variant="outline" className="w-full justify-start" size="lg">
                   <Plus className="mr-2 h-4 w-4" />
                   Add Exercise
                 </Button>
               </Link>
-                <Link to="/analytics">
-                  <Button variant="secondary" className="w-full justify-start" size="lg">
-                    <Activity className="mr-2 h-4 w-4" />
-                    View Analytics
-                  </Button>
-                </Link>
-                <Link to="/ai-analytics">
-                  <Button variant="outline" className="w-full justify-start" size="lg">
-                    <Brain className="mr-2 h-4 w-4" />
-                    AI Coach
-                  </Button>
-                </Link>
+              <Link to="/calendar">
+                <Button variant="secondary" className="w-full justify-start" size="lg">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  View Calendar
+                </Button>
+              </Link>
+              <Link to="/ai-analytics">
+                <Button variant="outline" className="w-full justify-start" size="lg">
+                  <Brain className="mr-2 h-4 w-4" />
+                  AI Coach
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
 
         {/* Recent Workouts */}
-        <Card className="mt-8">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Activity className="h-5 w-5 text-primary" />
@@ -244,8 +199,8 @@ const Dashboard = () => {
             </div>
           </CardContent>
         </Card>
-      </main>
-    </div>
+      </div>
+    </Layout>
   );
 };
 

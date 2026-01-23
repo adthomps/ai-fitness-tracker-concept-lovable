@@ -27,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: '/calendar', label: 'Calendar' },
     { path: '/exercises', label: 'Exercises' },
     { path: '/workouts', label: 'Workouts' },
+    { path: '/programs', label: 'Programs' },
     { path: '/dexa', label: 'DEXA' },
     { path: '/imports', label: 'Imports' },
     { path: '/ai-analytics', label: 'AI & Analytics' },

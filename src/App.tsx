@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Exercises from "./pages/Exercises";
 import Workouts from "./pages/Workouts";
+import Programs from "./pages/Programs";
+import WorkoutSession from "./pages/WorkoutSession";
 import Analytics from "./pages/Analytics";
 import AIAnalytics from "./pages/AIAnalytics";
 import Calendar from "./pages/Calendar";
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
             <Route path="/exercises" element={<ProtectedRoute><Exercises /></ProtectedRoute>} />
             <Route path="/workouts" element={<ProtectedRoute><Workouts /></ProtectedRoute>} />
+            <Route path="/programs" element={<ProtectedRoute><Programs /></ProtectedRoute>} />
+            <Route path="/session/:id?" element={<ProtectedRoute><WorkoutSession /></ProtectedRoute>} />
             <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
             <Route path="/ai-analytics" element={<ProtectedRoute><AIAnalytics /></ProtectedRoute>} />
             <Route path="/dexa" element={<ProtectedRoute><DexaScans /></ProtectedRoute>} />

@@ -15,6 +15,7 @@ import {
   Activity
 } from 'lucide-react';
 import Layout from '@/components/Layout';
+import { useNavigate } from 'react-router-dom';
 
 // Mock workouts data
 const mockWorkouts = [
@@ -76,6 +77,7 @@ const mockWorkouts = [
 ];
 
 const Workouts = () => {
+  const navigate = useNavigate();
   const [workouts] = useState(mockWorkouts);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -258,7 +260,7 @@ const Workouts = () => {
                 </div>
 
                 <div className="flex gap-2 pt-2">
-                  <Button className="flex-1" size="sm">
+                  <Button className="flex-1" size="sm" onClick={() => navigate(`/session/${workout.id}`)}>
                     <Play className="mr-2 h-3 w-3" />
                     Start Workout
                   </Button>
